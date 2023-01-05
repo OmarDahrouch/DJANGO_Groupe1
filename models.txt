@@ -1,0 +1,26 @@
+
+class Client(models.Model):
+    nom_client: models.CharField(max_length=100)
+    prenom_client: models.CharField(max_length=100)
+    email_client: models.EmailField()
+    adresse: models.CharField(max_length=100)
+    tel: models.CharField(max_length=100)
+
+
+class Admin(models.Model):
+    login_ad: models.CharField(max_length=100)
+    password_ad: models.CharField(max_length=50)
+
+
+class Compte(models.Model):
+    login_c: models.CharField(max_length=100)
+    password_c: models.CharField(max_length=50)
+    dt_creation: models.DateField()
+
+
+class Commande(models.Model):
+    ref_cmd: models.IntegerField(blank=True)
+    description: models.CharField(max_length=100)
+    prix: models.FloatField()
+    image: models.ImageField()
+    qte_stock: models.IntegerField(blank=True)
