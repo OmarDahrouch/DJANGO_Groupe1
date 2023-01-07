@@ -24,6 +24,7 @@ urlpatterns = [
     path('users/', include("users.urls")),
 ]
 
+# contraint for media files
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL,
                           document_root=settings.MEDIA_ROOT)
