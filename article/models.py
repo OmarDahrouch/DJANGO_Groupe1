@@ -8,4 +8,4 @@ class Article(models.Model):
     ref_article = models.IntegerField()
     prix = models.FloatField()
     qte_stock = models.IntegerField()
-    new_image = models.FileField(upload_to="article", null=True, default=None)
+    new_image = models.ImageField(upload_to="article", default=None)
