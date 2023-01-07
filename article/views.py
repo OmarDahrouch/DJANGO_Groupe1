@@ -5,10 +5,6 @@ from django.core.paginator import Paginator
 # Create your views here.
 
 
-def index(request):
-    return render(request, 'article/index.html')
-
-
 def home(request):
     article_article = Article.objects.all()
     item_name = request.GET.get('item-name')
