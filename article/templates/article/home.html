@@ -2,7 +2,7 @@
 
 {%block content%}
 <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-11 m-auto">
         <form class="card card-sm">
             <div class="card-body row no-gutters align-items-center">
                 <div class="col">
@@ -23,9 +23,9 @@
         <div class="card">
             <img src="{{ article.new_image.url }}" alt="" class="card-ing-top">
             <div class="card-body">
-                <div class="card-title">{{ article.nom_art }}</div>
-                <div style="color:red" class="card-text">{{ article.prix }} MAD</div>
-                <a class="btn btn-warning">Voir</a>
+                <div class="card-title font-weight-bold">{{ article.nom_art }}</div>
+                <div style="color:red" class="card-text font-weight-bold">{{ article.prix }} MAD</div>
+                <a href="{{ article.id }}" class="btn btn-warning">Voir</a>
                 <button class="btn ted btn-success">Ajouter</button>
             </div>
         </div>

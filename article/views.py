@@ -15,3 +15,8 @@ def home(request):
     article_article = paginator.get_page(page)
     return render(request, 'article/home.html',
                   {'article_article': article_article})
+
+
+def detail(request, myid):
+    article_article = Article.objects.get(id=myid)
+    return render(request, 'article/detail.html', {'article': article_article})
