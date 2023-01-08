@@ -21,3 +21,9 @@ def home(request):
 def detail(request, myid):
     article_article = Article.objects.get(id=myid)
     return render(request, 'article/detail.html', {'article': article_article})
+
+
+def categorie(request, cat):
+    article_article = Article.objects.filter(categorie=cat)
+    return render(request, 'article/home.html',
+                  {'article_article': article_article})
