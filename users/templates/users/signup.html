@@ -8,7 +8,7 @@
     <form method="POST">
         {% csrf_token %}
         <div class="form-group">
-            {{ form }}
+            {{form|crispy}}
         </div>
         <div class="form-group">
             <button class="btn btn-primary" type="submit">S'inscrire</button>
