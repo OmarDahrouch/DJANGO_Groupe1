@@ -7,18 +7,43 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
     integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.min.js"
+    integrity="sha384-Atwg2Pkwv9vp0ygtn1JAojH0nYbwNJLPhwyoVbhoPwBhjQPR5VtM2+xf0Uwh9KtT"
+    crossorigin="anonymous"></script>
   <title>Document</title>
 </head>
 
 <body>
   <nav class="navbar navbar-expand-lg navbar-light " style="background-color: #e3f2fd;">
     <a class="navbar-brand" href="/article/">EASY/AUTO</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
+
+    <div class="dropdown">
+      <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown"
+        aria-expanded="false">
+        Categorie
+      </button>
+      <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+        <li><a class="dropdown-item" href="#">part</a></li>
+      </ul>
+    </div>
+
+    <div style="width: 40%;margin: auto;">
+      <form class="d-flex">
+        <input type="search" placeholder="Entrez le nom de l'article" name="item-name"
+          class="form-control form-control-borderless">
+        <button type="submit" class="btn btn-success">Recherche</button>
+      </form>
+    </div>
+
+
+
+    <div id="navbarNav">
       <ul class="navbar-nav navbar-right ml-auto">
+
+        <li class="nav-item ml-auto">
+          <a class="nav-link" href="{% url 'achat:panier' %}">Panier</a>
+        </li>
+
         {% if user.is_authenticated %}
         <li>
           <form class="logout-link" action="{% url 'users:logout' %}" method="post">
@@ -31,14 +56,14 @@
           <a class="nav-link" href="{% url 'users:login' %}">Se connecter</a>
         </li>
         {% endif %}
+
       </ul>
     </div>
   </nav>
 
-  <div style="margin-left: 10px; margin-right: 10px;">
+  <div style="margin-left: 10px; margin-right: 10px; margin-top: 2%;">
     {%block content%}
     {%endblock content%}
-
   </div>
 </body>
 
