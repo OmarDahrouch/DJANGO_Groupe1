@@ -1,11 +1,12 @@
 {% extends 'article/base.html' %}
 {% load crispy_forms_tags %}
 
+
 {% block content %}
 <h1>Log in</h1>
 <form class="site-form" action="{% url 'users:login' %}" method="post">
     {% csrf_token %}
-        {{form|crispy}}
+    {{form|crispy}}
     <input type="submit" value="Login" />
 </form>
 <p>Not got an account? <a href="{% url 'users:signup' %}">Sign Up</a></p>
