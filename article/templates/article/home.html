@@ -2,45 +2,43 @@
 
 {%block content%}
 <div>
-    <div class="row">
+    <div class="row" style="margin: auto;">
         {% for article in article_article %}
-        <div class="col-md-3">
-            <div class="card">
-                <img src="{{ article.new_image.url }}" alt="" class="card-ing-top">
-                <div class="card-body">
-                    <div class="card-title font-weight-bold">{{ article.nom_art }}</div>
-                    <div style="color:red" class="card-text font-weight-bold">{{ article.prix }} MAD</div>
-                    <a href="{{ article.id }}" class="btn btn-warning">Voir</a>
+        <div class="card" style="width: 18rem ;margin:auto;height: 23rem;">
+            <img src="{{ article.new_image.url }}" class="card-img-top" alt="" style="height: 55%;">
+            <div class="card-body">
+                <h5 class="card-title">{{ article.nom_art }}</h5>
+                <div style="color:red" class="card-text font-weight-bold">{{ article.prix }} MAD</div>
+                <div style=" ">
+                    <a href="{{ article.id }}" class="btn btn-warning" style="margin-right: 5%;">Voir</a>
                     <button class="btn ted btn-success">Ajouter</button>
                 </div>
+
             </div>
         </div>
         {% endfor %}
     </div>
 
-    <div class="row mt-3">
-        <div class="col-md-3 offset-md-4">
-            <ul class="pagination">
-                {% if article_article.has_previous %}
-                <li class="page-item">
-                    <a class="page-link" href="?page={{ article_article.previous_page_number }}">Precedent</a>
-                </li>
-                {% endif %}
+    <div style="margin: auto; margin-top: 2%;" class="col-md-3 offset-md-4">
+        <ul class="pagination">
+            {% if article_article.has_previous %}
+            <li class="page-item">
+                <a class="page-link" href="?page={{ article_article.previous_page_number }}">Precedent</a>
+            </li>
+            {% endif %}
 
-                <li class="page-item active">
-                    <a class="page-link" href="?page={{ article_article.number }}">{{ article_article.number }}</a>
-                </li>
+            <li class="page-item active">
+                <a class="page-link" href="?page={{ article_article.number }}">{{ article_article.number }}</a>
+            </li>
 
-                {% if article_article.has_next %}
-                <li class="page-item">
-                    <a class="page-link" href="?page={{ article_article.next_page_number }}">Suivant</a>
-                </li>
-                {% endif %}
+            {% if article_article.has_next %}
+            <li class="page-item">
+                <a class="page-link" href="?page={{ article_article.next_page_number }}">Suivant</a>
+            </li>
+            {% endif %}
 
-            </ul>
-        </div>
+        </ul>
     </div>
-
 </div>
 
 
