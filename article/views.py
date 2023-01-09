@@ -21,3 +21,7 @@ def home(request):
 def detail(request, myid):
     article_article = Article.objects.get(id=myid)
     return render(request, 'article/detail.html', {'article': article_article})
+
+
+def checkout(request):
+    return render(request, 'article/checkout.html')
