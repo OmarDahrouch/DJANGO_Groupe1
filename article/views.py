@@ -24,6 +24,10 @@ def detail(request, myid):
     return render(request, 'article/detail.html', {'article': article_article})
 
 
+def checkout(request):
+    return render(request, 'article/checkout.html')
+
+
 def categorie(request, cat):
     article_article = Article.objects.filter(categorie=cat)
 
