@@ -70,7 +70,7 @@
         document.getElementById("panier").innerHTML = "Panier(" + Object.keys(panier).length + ")";
     });
 
-
+    AfficherList(panier);
 
     function AfficherList(panier) {
         var panierString = " ";
@@ -85,6 +85,6 @@
         $('[data-toggle="popover"]').popover();
         document.getElementById('panier').setAttribute('data-content', panierString);
     }
-    AfficherList(panier);
+
 </script>
 {% endblock %}
