@@ -5,12 +5,12 @@
     <div class="row" style="margin: auto;">
         {% for article in article_article %}
         <div class="col-md-3">
-            <div class="card" style="width: 18rem ;margin:auto;height: 23rem;">
+            <div class="card" style="width: 18rem ;height: 23rem;">
                 <img src="{{ article.new_image.url }}" alt="" class="card-ing-top" style="height: 55%;">
                 <div class="card-body">
                     <div id="aa{{ article.id }}" class="card-title font-weight-bold">{{ article.nom_art }}</div>
-                    <div id="price{{ product.id }}" style="color:red" class="card-text font-weight-bold">
-                        {{article.prix}} MAD</div>
+                    <div id="price{{ article.id }}" style="color:red" class="card-text font-weight-bold">
+                        {{article.prix}}</div>
                     <a href="{{ article.id }}" class="btn btn-warning" style="margin-right: 5%;">Voir</a>
                     <button id="{{ article.id }}" class="btn add btn-success">Ajouter</button>
                 </div>
@@ -45,7 +45,7 @@
 {%endblock content%}
 
 {% block js %}
-<script type="text/javascript">
+<script type="text/javascript" async>
     console.log('Juste pour tester ');
     if (localStorage.getItem('panier') == null) {
         var panier = {};
@@ -74,11 +74,14 @@
 
     function AfficherList(panier) {
         var panierString = " ";
+        var donne = "";
         panierString += "<h5>Voici votre liste</h5>";
         var index = 1;
         for (var x in panier) {
             panierString += index;
-            panierString += document.getElementById("aa" + x).innerHTML + " Qte: " + panier[x][0] + "</br>";
+            donne = document.getElementById("aa" + x).innerHTML;
+            console.log("le id:" + donne)
+            panierString += " " + donne + "</br>" + " Qte: " + panier[x][0] + "</br>";
             index += 1;
         }
         panierString += "<a href='/checkout' class='btn btn-primary'>Checkout</a>";
