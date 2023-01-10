@@ -12,22 +12,22 @@
         <div class="text-warning display-3">
             {{ article.nom_art }}
         </div>
-        <div class="text-lg font-weight-bold">
+        <div class="text-lg font-weight-bold" style="color:blue">
             Prix: {{ article.prix }} MAD
         </div>
         {% if article.qte_stock > 0 %}
-        <div class="text-lg font-weight-bold">
+        <div class="text-lg font-weight-bold" style="color:green">
             Stock: {{ article.qte_stock }}
         </div>
         {%else%}
-        <div class="text-lg font-weight-bold">
+        <div class="text-lg font-weight-bold" style="color:red">
             stock: Epuisé
         </div>
         {%endif%}
         <div>
             {{ article.description }}
         </div>
-        <a href="#"><button class="btn btn-danger">Acheter</button></a>
+        <a href="/"><button class="btn btn-danger">Retour</button></a>
     </div>
 </div>
 {%endblock content%}
