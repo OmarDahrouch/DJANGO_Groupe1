@@ -9,7 +9,8 @@
                 <img src="{{ article.new_image.url }}" alt="" class="card-ing-top" style="height: 55%;">
                 <div class="card-body">
                     <div id="aa{{ article.id }}" class="card-title font-weight-bold">{{ article.nom_art }}</div>
-                    <div id="price{{ product.id }}" style="color:red" class="card-text font-weight-bold">{{ article.prix }} MAD</div>
+                    <div id="price{{ article.id }}" style="color:red; float:left;"  class="card-text font-weight-bold">{{ article.prix }} .</div>
+                    <div style="float: left; color:black">MAD</div><br>
                     <a href="{{ article.id }}" class="btn btn-warning" style="margin-right: 5%;">Voir</a>
                     <button id="{{ article.id }}" class="btn add btn-success">Ajouter</button>
                 </div>
@@ -58,11 +59,13 @@
             if(panier[item_id] != undefined){
                 quantite = panier[item_id][0] +1;
                 panier[item_id][0] = quantite;
+                panier[item_id][2] += parseFloat(document.getElementById("price"+item_id).innerHTML);
             }
             else{
                 quantite = 1;
+                prix = parseFloat(document.getElementById("price"+item_id).innerHTML);                
                 nom = document.getElementById("aa"+item_id).innerHTML
-                panier[item_id] = [quantite, nom];
+                panier[item_id] = [quantite, nom, prix];
             }
             console.log(panier);
             localStorage.setItem('panier', JSON.stringify(panier));
