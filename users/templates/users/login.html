@@ -11,6 +11,9 @@
         <div class="form-group">
             {{form|crispy}}
         </div>
+        {% if request.GET.next%}
+        <input type="hidden" name="next" value="{{request.GET.next}}">
+        {%endif%}
 
         <button class="btn btn-primary" type="submit">Se Connecter</button>
     </form>

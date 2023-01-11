@@ -6,6 +6,6 @@ app_name = 'article'
 urlpatterns = [
     path('', views.home, name="home"),
     path('<int:myid>', views.detail, name="detail"),
-    path('checkout/', views.checkout, name="chekout"),
-    path('<str:cat>', views.categorie, name="cat")
+    path('checkout/', views.checkout, name="checkout"),
+    path('article/<str:cat>', views.categorie, name="cat")
 ]

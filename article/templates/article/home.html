@@ -2,15 +2,16 @@
 
 {%block content%}
 <div>
-    <div class="row" style="margin: auto;">
+    <div class="row">
         {% for article in article_article %}
-        <div class="col-md-3">
-            <div class="card" style="width: 18rem ;height: 23rem;">
+        <div class="col-md-3" style="margin-top: 1%;">
+            <div class="card" style="width: 18rem ;margin:auto;height: 23rem;">
                 <img src="{{ article.new_image.url }}" alt="" class="card-ing-top" style="height: 55%;">
                 <div class="card-body">
-                    <div id="aa{{ article.id }}" class="card-title font-weight-bold">{{ article.nom_art }}</div>
-                    <div id="price{{ article.id }}" style="color:red" class="card-text font-weight-bold">
-                        {{article.prix}}</div>
+                    <div id="aa{{ article.id }}" class="card-title font-weight-bold">{{article.nom_art}}</div>
+                    <div id="price{{ article.id }}" style="color:red; float:left;" class="card-text font-weight-bold">
+                        {{article.prix}} </div>
+                    <div style="float: left; color:black">MAD</div><br>
                     <a href="{{ article.id }}" class="btn btn-warning" style="margin-right: 5%;">Voir</a>
                     <button id="{{ article.id }}" class="btn add btn-success">Ajouter</button>
                 </div>
@@ -59,11 +60,13 @@
         if (panier[item_id] != undefined) {
             quantite = panier[item_id][0] + 1;
             panier[item_id][0] = quantite;
+            panier[item_id][2] += parseFloat(document.getElementById("price" + item_id).innerHTML);
         }
         else {
             quantite = 1;
+            prix = parseFloat(document.getElementById("price" + item_id).innerHTML);
             nom = document.getElementById("aa" + item_id).innerHTML
-            panier[item_id] = [quantite, nom];
+            panier[item_id] = [quantite, nom, prix];
         }
         console.log(panier);
         localStorage.setItem('panier', JSON.stringify(panier));
@@ -80,10 +83,11 @@
         for (var x in panier) {
             panierString += index;
             donne = document.getElementById("aa" + x).innerHTML;
-            console.log("le id:" + donne)
-            panierString += " " + donne + "</br>" + " Qte: " + panier[x][0] + "</br>";
+            console.log(donne);
+            panierString += document.getElementById("aa" + x).innerHTML + " Qte: " + panier[x][0] + "</br>";
             index += 1;
         }
+
         panierString += "<a href='/checkout' class='btn btn-primary'>Checkout</a>";
         $('[data-toggle="popover"]').popover();
         document.getElementById('panier').setAttribute('data-content', panierString);
