@@ -11,11 +11,13 @@ class AdminArticle(admin.ModelAdmin):
 class AdminCommande(admin.ModelAdmin):
     list_display = (
         'items',
+        'client',
         'nom',
-        'email',
+        'prenom',
         'address',
         'ville',
         'pays',
+        'phonenumber',
         'total',
         'date_commande',
     )

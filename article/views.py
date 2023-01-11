@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from .models import Article, Commande
 from django.core.paginator import Paginator
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 
@@ -24,12 +25,14 @@ def detail(request, myid):
     return render(request, 'article/detail.html', {'article': article_article})
 
 
+@login_required(login_url="/users/login")
 def checkout(request):
     if request.method == "POST":
         items = request.POST.get('items')
         total = request.POST.get('total')
         nom = request.POST.get('nom')
-        email = request.POST.get('email')
+        prenom = request.POST.get('prenom')
+        phonenumber = request.POST.get('phonenumber')
         address = request.POST.get('address')
         ville = request.POST.get('ville')
         pays = request.POST.get('pays')
@@ -37,12 +40,15 @@ def checkout(request):
         com = Commande(items=items,
                        total=total,
                        nom=nom,
-                       email=email,
+                       prenom=prenom,
                        address=address,
+                       phonenumber=phonenumber,
                        ville=ville,
                        pays=pays,
-                       zipcode=zipcode)
+                       zipcode=zipcode,
+                       client=request.user)
         com.save()
+
     return render(request, 'article/checkout.html')
 
 
