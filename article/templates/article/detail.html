@@ -1,7 +1,7 @@
 {%extends "article/base.html"%}
 
 {%block content%}
-<div class="row">
+<div class="row" style="margin-bottom: 50px; margin-top: 50px; margin-left: 30px">
     <div class="col-md-4">
         <div>
             <img src="{{ article.new_image.url }}" width="500x" height="500x" alt=""
@@ -9,25 +9,25 @@
         </div>
     </div>
     <div class="col-md-6">
-        <div class="text-warning display-3">
+        <div class=" display-4">
             {{ article.nom_art }}
         </div>
-        <div class="text-lg font-weight-bold" style="color:blue">
+        <div class="text-lg font-weight-bold" style="color:blue; margin-bottom: 10px; margin-top: 10px;">
             Prix: {{ article.prix }} MAD
         </div>
         {% if article.qte_stock > 0 %}
-        <div class="text-lg font-weight-bold" style="color:green">
+        <div class="text-lg font-weight-bold" style="color:green; margin-top: 10px;">
             Stock: {{ article.qte_stock }}
         </div>
         {%else%}
-        <div class="text-lg font-weight-bold" style="color:red">
+        <div class="text-lg font-weight-bold" style="color:red; margin-top: 50px;">
             stock: Epuisé
         </div>
         {%endif%}
         <div>
             {{ article.description }}
         </div>
-        <a href="/"><button class="btn btn-danger">Retour</button></a>
+        <a href="/"><button class="btn btn-danger" style="margin-bottom: 25px; margin-top: 25px;">Retour</button></a>
     </div>
 </div>
 {%endblock content%}
