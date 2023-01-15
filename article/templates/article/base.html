@@ -6,6 +6,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css?family=Nunito+Sans:400,400i,700,900&display=swap" rel="stylesheet">
   <link rel="icon" href="{% static 'images/Logo.png' %}">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
     integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
@@ -36,16 +37,9 @@
         Categorie
       </button>
       <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-        <li><a class="dropdown-item" href="/mercedes">Mercedes</a></li>
-        <li><a class="dropdown-item" href="/audi">audi</a></li>
+        <li><a class="dropdown-item" href="article/huile">Huile moteur</a></li>
+        <li><a class="dropdown-item" href="article/moteur">Piece de moteur</a></li>
       </ul>
-    </div>
-
-    <div class="nav-item">
-      <button id="panier" type="button" class="btn btn-secondary" data-html="true" data-container="body"
-        data-toggle="popover" data-placement="bottom" data-content="Hii i am omar">
-        Panier(0)
-      </button>
     </div>
 
     <div style="width: 40%;margin: auto;">
@@ -56,6 +50,13 @@
       </form>
     </div>
 
+    <div class="nav-item" style="margin: 0.4%;">
+      <button id="panier" type="button" class="btn btn-secondary" data-html="true" data-container="body"
+        data-toggle="popover" data-placement="bottom" data-content="Hii i am omar">
+        Panier(0)
+      </button>
+    </div>
+
     <div id="navbarNav">
       <ul class="navbar-nav navbar-right ml-auto">
 
@@ -63,7 +64,7 @@
         <li>
           <form class="logout-link" action="{% url 'users:logout' %}" method="post">
             {% csrf_token %}
-            <button type="submit">Logout</button>
+            <button class=" btn btn-danger" type="submit">Logout</button>
           </form>
         </li>
         {% else %}

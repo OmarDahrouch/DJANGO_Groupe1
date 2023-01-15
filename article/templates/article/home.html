@@ -11,7 +11,7 @@
                     <div id="aa{{ article.id }}" class="card-title font-weight-bold">{{article.nom_art}}</div>
                     <div id="price{{ article.id }}" style="color:red; float:left;" class="card-text font-weight-bold">
                         {{article.prix}} </div>
-                    <div style="float: left; color:black">MAD</div><br>
+                    <div style="float: left; color:black"> MAD</div><br>
                     <a href="{{ article.id }}" class="btn btn-warning" style="margin-right: 5%; margin-top:5%;">Voir</a>
                     <button id="{{ article.id }}" class="btn add btn-success" style="margin-top:5%;">Ajouter</button>
                 </div>
@@ -80,16 +80,20 @@
         var donne = "";
         panierString += "<h5>Voici votre liste</h5>";
         var index = 1;
-        for (var x in panier) {
-            panierString += index;
-            donne = document.getElementById("aa" + x).innerHTML;
-            console.log(donne);
-            panierString += document.getElementById("aa" + x).innerHTML + " Qte: " + panier[x][0] + "</br>";
-            index += 1;
+        if (localStorage.getItem('panier') == null) {
+            panierString += "<p>panier est vide</p>"
+            $('[data-toggle="popover"]').popover();
+        } else {
+            for (var x in panier) {
+                panierString += index;
+                donne = document.getElementById("aa" + x).innerHTML;
+                console.log(donne);
+                panierString += document.getElementById("aa" + x).innerHTML + " Qte: " + panier[x][0] + "</br>";
+                index += 1;
+                panierString += "<a href='/checkout' class='btn btn-primary'>Checkout</a>";
+                $('[data-toggle="popover"]').popover();
+            }
         }
-
-        panierString += "<a href='/checkout' class='btn btn-primary'>Checkout</a>";
-        $('[data-toggle="popover"]').popover();
         document.getElementById('panier').setAttribute('data-content', panierString);
     }
 
