@@ -71,7 +71,7 @@ WSGI_APPLICATION = 'DJAuto.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'auto',
+        'NAME': 'DJANGO_Groupe1_DB',
         'USER': 'root',
         'PASSWORD': '',
         'HOST': 'localhost',
