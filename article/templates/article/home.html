@@ -90,9 +90,10 @@
                 console.log(donne);
                 panierString += document.getElementById("aa" + x).innerHTML + " Qte: " + panier[x][0] + "</br>";
                 index += 1;
-                panierString += "<a href='/checkout' class='btn btn-primary'>Checkout</a>";
-                $('[data-toggle="popover"]').popover();
             }
+
+            panierString += "<a href='/checkout' class='btn btn-primary'>Checkout</a>";
+            $('[data-toggle="popover"]').popover();
         }
         document.getElementById('panier').setAttribute('data-content', panierString);
     }
