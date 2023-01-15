@@ -1,9 +1,7 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render
 from .models import Article, Commande
 from django.core.paginator import Paginator
 from django.contrib.auth.decorators import login_required
-
-# Create your views here.
 
 
 def home(request):
@@ -11,6 +9,9 @@ def home(request):
     item_name = request.GET.get('item-name')
     if item_name != '' and item_name is not None:
         article_article = Article.objects.filter(nom_art__icontains=item_name)
+
+
+# Paginator est la fonction qui nous permet ajouter une pagination pour notre page
 
     paginator = Paginator(article_article, 20)
     page = request.GET.get('page')
